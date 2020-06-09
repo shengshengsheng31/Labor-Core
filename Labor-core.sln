@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labor.Services", "Labor.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labor.IServices", "Labor.IServices\Labor.IServices.csproj", "{3083D29F-C15B-4B32-A1C2-A915C4CC9068}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labor.Common", "Labor.Common\Labor.Common.csproj", "{22FFDFAE-0D5A-45E4-A93A-680F176FAAB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3083D29F-C15B-4B32-A1C2-A915C4CC9068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3083D29F-C15B-4B32-A1C2-A915C4CC9068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3083D29F-C15B-4B32-A1C2-A915C4CC9068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22FFDFAE-0D5A-45E4-A93A-680F176FAAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22FFDFAE-0D5A-45E4-A93A-680F176FAAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22FFDFAE-0D5A-45E4-A93A-680F176FAAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22FFDFAE-0D5A-45E4-A93A-680F176FAAB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
