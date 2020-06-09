@@ -21,6 +21,11 @@ namespace Labor.Core
             Host.CreateDefaultBuilder(args)
                 //将默认的ServiceProviderFactory替换为AutoFac服务提供工厂
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
