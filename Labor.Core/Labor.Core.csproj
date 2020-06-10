@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>E:\WorkCode\Labor-core\Labor.Core\Labor.Core.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DocumentationFile></DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
@@ -20,8 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Labor.IServices\Labor.IServices.csproj" />
+    <ProjectReference Include="..\Labor.Common\Labor.Common.csproj" />
     <ProjectReference Include="..\Labor.Model\Labor.Model.csproj" />
+    <ProjectReference Include="..\Labor.Repository\Labor.Repository.csproj" />
+    <ProjectReference Include="..\Labor.Services\Labor.Services.csproj" />
   </ItemGroup>
 
 
