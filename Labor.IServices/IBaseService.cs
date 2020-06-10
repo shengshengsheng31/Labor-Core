@@ -62,7 +62,7 @@ namespace Labor.IServices
         /// </summary>
         /// <param name="asc"></param>
         /// <returns></returns>
-        IQueryable<TEntity> GetAllByOrder(bool asc = true);
+        IQueryable<TEntity> GetAllByOrder(bool asc = false);
 
         /// <summary>
         /// 获取数据分页
@@ -79,7 +79,7 @@ namespace Labor.IServices
         /// <param name="pageIndex"></param>
         /// <param name="asc"></param>
         /// <returns></returns>
-        IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = true);
+        IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = false);
 
         /// <summary>
         /// 判断对象是否存在

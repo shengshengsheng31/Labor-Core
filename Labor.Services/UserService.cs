@@ -29,14 +29,20 @@ namespace Labor.Services
 
         public async Task<bool> RegisterAsync(RegisterViewModel model)
         {
-            if (await _userRepository.GetAll().AnyAsync(m => m.Account == model.Account)) return false;
-            string pwd = Md5Helper.Md5Encrypt(model.Password);
-            await _userRepository.CreateAsync(new User
+            if (await _userRepository.GetAll().AnyAsync(m => m.Account == model.Account))
             {
-                Account = model.Account,
-                Password = pwd
-            });
-            return true;
+                return false;
+            }
+            else
+            {
+                string pwd = Md5Helper.Md5Encrypt(model.Password);
+                await _userRepository.CreateAsync(new User
+                {
+                    Account = model.Account,
+                    Password = pwd
+                });
+                return true;
+            }
         }
     }
 }

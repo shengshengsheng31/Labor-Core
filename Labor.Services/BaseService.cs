@@ -37,7 +37,7 @@ namespace Labor.Services
             return BaseRepository.GetAll();
         }
 
-        public IQueryable<TEntity> GetAllByOrder(bool asc = true)
+        public IQueryable<TEntity> GetAllByOrder(bool asc = false )
         {
             return BaseRepository.GetAllByOrder(asc);
         }
@@ -47,7 +47,7 @@ namespace Labor.Services
             return BaseRepository.GetAllByPage(pageSize, pageNumber);
         }
 
-        public IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = true)
+        public IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = false )
         {
             return BaseRepository.GetAllByPageOrder(pageSize, pageNumber, asc);
         }

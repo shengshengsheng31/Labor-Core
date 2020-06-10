@@ -69,6 +69,26 @@
             等级
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Option">
+            <summary>
+            选项ABC
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Goods">
+            <summary>
+            劳保品
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.LoginViewModel.Account">
             <summary>
             登录帐号
@@ -77,6 +97,16 @@
         <member name="P:Labor.Model.ViewModels.LoginViewModel.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.PageViewModel.PageNumber">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.PageViewModel.PageSize">
+            <summary>
+            每页数量
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.RegisterViewModel.Account">

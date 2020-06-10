@@ -10,6 +10,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.CreateLaborHeadViewModel)">
+            <summary>
+            创建一个劳保选项
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Labor.Core.Controllers.UserController.LoginAsync(Labor.Model.ViewModels.LoginViewModel)">
             <summary>
             登录
@@ -19,6 +26,13 @@
         <member name="M:Labor.Core.Controllers.UserController.RegisterAsync(Labor.Model.ViewModels.RegisterViewModel)">
             <summary>
             注册
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.GetAllUser(Labor.Model.ViewModels.PageViewModel)">
+            <summary>
+            获取所有用户
             </summary>
             <param name="model"></param>
             <returns></returns>

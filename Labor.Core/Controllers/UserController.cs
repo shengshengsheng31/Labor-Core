@@ -58,6 +58,17 @@ namespace Labor.Core.Controllers
         }
 
         /// <summary>
+        /// 获取所有用户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet(nameof(GetAllUser))]
+        public IActionResult GetAllUser([FromQuery]PageViewModel model)
+        {
+            return Ok(_userService.GetAllByPageOrder(model.PageSize, model.PageNumber));
+        }
+
+        /// <summary>
         /// 验证Jwt
         /// </summary>
         /// <param name="token"></param>

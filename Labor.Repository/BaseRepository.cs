@@ -65,7 +65,7 @@ namespace Labor.Repository
         /// </summary>
         /// <param name="asc"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetAllByOrder(bool asc = true)
+        public IQueryable<TEntity> GetAllByOrder(bool asc = false)
         {
             var datas = GetAll();
             return datas = asc ?
@@ -90,7 +90,7 @@ namespace Labor.Repository
         /// <param name="pageIndex"></param>
         /// <param name="asc"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 0, bool asc = true)
+        public IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 0, bool asc = false )
         {
             return GetAllByOrder(asc).Skip(pageSize * (pageNumber - 1)).Take(pageSize);
         }
