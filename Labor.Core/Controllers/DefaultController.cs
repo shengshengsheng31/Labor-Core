@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,10 @@ namespace Labor.Core.Controllers
     [ApiController]
     public class DefaultController : ControllerBase
     {
+        /// <summary>
+        /// 默认的get
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Default
         [HttpGet]
         public IEnumerable<string> Get()
@@ -25,6 +30,7 @@ namespace Labor.Core.Controllers
             return "value";
         }
 
+        [Authorize]
         // POST: api/Default
         [HttpPost]
         public void Post([FromBody] string value)

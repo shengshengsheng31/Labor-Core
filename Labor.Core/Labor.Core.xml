@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Labor.Core</name>
+    </assembly>
+    <members>
+        <member name="M:Labor.Core.Controllers.DefaultController.Get">
+            <summary>
+            默认的get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.LoginAsync(Labor.Model.ViewModels.LoginViewModel)">
+            <summary>
+            登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.RegisterAsync(Labor.Model.ViewModels.RegisterViewModel)">
+            <summary>
+            注册
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.TestJwt(System.String)">
+            <summary>
+            验证Jwt
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

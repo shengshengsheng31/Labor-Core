@@ -26,6 +26,6 @@ namespace Labor.Model.ViewModels
         /// </summary>
         [Required]
         [Compare(nameof(Password))]
-        public string MyProperty { get; set; }
+        public string PasswordConfirm { get; set; }
     }
 }
