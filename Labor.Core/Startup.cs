@@ -11,6 +11,7 @@ using Labor.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -120,6 +121,10 @@ namespace Labor.Core
                 };
             });
             #endregion
+
+            #region 注册HttpContext存取器服务
+            services.AddHttpContextAccessor();
+            #endregion
         }
 
         //configureContainer访问AutoFac容器生成器，自动注入service和repository
@@ -140,6 +145,17 @@ namespace Labor.Core
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            #region 500状态码处理
+            app.UseExceptionHandler(builder =>
+            {
+                builder.Run(async context =>
+                {
+                    context.Response.StatusCode = 500;
+                    await context.Response.WriteAsync("500 error");
+                });
+            });
+            #endregion
 
             #region 启用Swagger,正式环境时Swagger应该在开发环境，现在因为开放api所以不作处理
             app.UseSwagger();
