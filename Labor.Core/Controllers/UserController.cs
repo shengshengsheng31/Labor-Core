@@ -15,11 +15,12 @@ namespace Labor.Core.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        
-        public UserController(IUserService userService)
+        private readonly Guid _userId;
+        public UserController(IUserService userService, IHttpContextAccessor httpContext)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-           
+            var accessor = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
+            _userId = JwtHelper.JwtDecrypt(accessor.HttpContext.Request.Headers["Authorization"]).UserId;
         }
         /// <summary>
         /// 登录

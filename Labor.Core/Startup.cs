@@ -6,7 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Labor.Common;
+using Labor.Core.AOP;
 using Labor.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -136,7 +138,14 @@ namespace Labor.Core
             //获取程序集并注册,采用每次请求都创建一个新的对象的模式
             var assemblyIServices = Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "Labor.Services.dll"));
             var assemblyIRepository = Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "Labor.Repository.dll"));
-            builder.RegisterAssemblyTypes(assemblyIServices, assemblyIRepository).AsImplementedInterfaces().InstancePerDependency();
+            //builder.RegisterAssemblyTypes(assemblyIServices, assemblyIRepository).AsImplementedInterfaces().InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(assemblyIRepository).AsImplementedInterfaces().InstancePerDependency();
+            //注册拦截器
+            builder.RegisterType<LogAop>();
+            //对目标类型启用动态代理，并注入自定义拦截器拦截BLL
+            builder.RegisterAssemblyTypes(assemblyIServices).AsImplementedInterfaces().InstancePerDependency()
+            .EnableInterfaceInterceptors().InterceptedBy(typeof(LogAop));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
