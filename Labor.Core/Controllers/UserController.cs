@@ -20,7 +20,10 @@ namespace Labor.Core.Controllers
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             IHttpContextAccessor accessor = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
-            _userId = JwtHelper.JwtDecrypt(accessor.HttpContext.Request.Headers["Authorization"]).UserId;
+            if (accessor.HttpContext.Request.Path.Value != "/api/user/login")
+            {
+                _userId = JwtHelper.JwtDecrypt(accessor.HttpContext.Request.Headers["Authorization"]).UserId;
+            }
         }
         /// <summary>
         /// 登录

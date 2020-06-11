@@ -29,7 +29,14 @@ namespace Labor.Core.AOP
 
         public void Intercept(IInvocation invocation)
         {
-            var userId = JwtHelper.JwtDecrypt(_accessor.HttpContext.Request.Headers["Authorization"]).UserId;
+            Guid userId = Guid.Empty;
+            try
+            {
+                userId = JwtHelper.JwtDecrypt(_accessor.HttpContext.Request.Headers["Authorization"]).UserId;
+            }
+            catch(Exception)
+            {
+            }
 
             //记录被拦截方法执行前的信息
             var logData = $"【执行用户】：{userId} \r\n" +
