@@ -27,7 +27,7 @@ namespace Labor.Services
         /// <returns></returns>
         public async Task<bool> CreateLaborHeadAsync(CreateLaborHeadViewModel model)
         {
-            if (await _laborHeadRepository.GetAll().AnyAsync(m => m.Title == model.Title && m.Option == model.Option))
+            if (await _laborHeadRepository.GetAll().AnyAsync(m => m.Title == model.Title))
             {
                 return false;
             }
@@ -36,7 +36,7 @@ namespace Labor.Services
                 await _laborHeadRepository.CreateAsync(new LaborHead()
                 {
                     Title = model.Title,
-                    Option = model.Option,
+                    Options = model.Option,
                     Goods = model.Goods
                 });
                 return true;
@@ -48,13 +48,10 @@ namespace Labor.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<List<LaborHead>> GetLaborHeadByTitle(GetLaborHeadViewModel model)
+        public async Task<LaborHead> GetLaborHeadByTitle(GetLaborHeadViewModel model)
         {
-            return await _laborHeadRepository.GetAll().Where(m => m.Title == model.Title).ToListAsync();
-            //List<LaborHead> labor = await _laborHeadRepository.GetAll().Where(m => m.Title == model.Title).ToListAsync();
-
-
-
+            return await _laborHeadRepository.GetAll().FirstOrDefaultAsync(m => m.Title == model.Title);
         }
+
     }
 }

@@ -4,14 +4,16 @@ using Labor.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Labor.Model.Migrations
 {
     [DbContext(typeof(LaborContext))]
-    partial class LaborContextModelSnapshot : ModelSnapshot
+    [Migration("20200611030236_Change Option2Options")]
+    partial class ChangeOption2Options
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,16 +30,8 @@ namespace Labor.Model.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Goods")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("LaborId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Option")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime2");

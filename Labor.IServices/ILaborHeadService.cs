@@ -2,6 +2,7 @@
 using Labor.Model.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Labor.IServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<List<LaborHead>> GetLaborHeadByTitle(GetLaborHeadViewModel model);
+        Task<LaborHead> GetLaborHeadByTitle(GetLaborHeadViewModel model);
+
     }
 }

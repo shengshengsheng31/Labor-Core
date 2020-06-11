@@ -21,12 +21,12 @@ namespace Labor.Core.Controllers
         public LaborHeadController(ILaborHeadService laborHeadService, IHttpContextAccessor httpContext)
         {
             _laborHeadService = laborHeadService ?? throw new ArgumentNullException(nameof(laborHeadService));
-            var accessor = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
+            IHttpContextAccessor accessor = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
             _userId = JwtHelper.JwtDecrypt(accessor.HttpContext.Request.Headers["Authorization"]).UserId;
         }
 
         /// <summary>
-        /// 创建一个劳保选项
+        /// 创建一期劳保
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -58,9 +58,10 @@ namespace Labor.Core.Controllers
         /// 获取所有的劳保
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> GetAllLaborHead()
+        [HttpGet(nameof(GetAllLaborHead))]
+        public IActionResult GetAllLaborHead()
         {
-            return Ok(await _laborHeadService.GetAll().ToListAsync());
+            return Ok( _laborHeadService.GetAll());
         }
     }
 }

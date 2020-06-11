@@ -17,7 +17,7 @@ namespace Labor.Model.Models
         /// 选项ABC
         /// </summary>
         [Required]
-        public string Option { get; set; }
+        public string Options { get; set; }
 
         /// <summary>
         /// 劳保品

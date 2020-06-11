@@ -10,11 +10,37 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.CreateLaborHeadViewModel)">
+        <member name="M:Labor.Core.Controllers.LaborDetailController.CreateLaborDetail(Labor.Model.ViewModels.CreateLaborDetailViewModel)">
             <summary>
-            创建一个劳保选项
+            用户选择劳保
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborDetailController.GetLaborDetailByHead(Labor.Model.ViewModels.GetLaborDetailViewModel)">
+            <summary>
+            根据劳保期数显示所有人选择的劳保
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.CreateLaborHeadViewModel)">
+            <summary>
+            创建一期劳保
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.GetOneLaborHead(Labor.Model.ViewModels.GetLaborHeadViewModel)">
+            <summary>
+            获取一期劳保
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.GetAllLaborHead">
+            <summary>
+            获取所有的劳保
+            </summary>
             <returns></returns>
         </member>
         <member name="M:Labor.Core.Controllers.UserController.LoginAsync(Labor.Model.ViewModels.LoginViewModel)">
