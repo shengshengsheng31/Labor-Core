@@ -36,7 +36,7 @@ namespace Labor.Services
                 await _laborHeadRepository.CreateAsync(new LaborHead()
                 {
                     Title = model.Title,
-                    Options = model.Option,
+                    Options = model.Options,
                     Goods = model.Goods
                 });
                 return true;

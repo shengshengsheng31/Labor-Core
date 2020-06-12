@@ -65,7 +65,7 @@ namespace Labor.Common
             {
                 return new TokenModelJwt();
             }
-            if (tokenStr.StartsWith("bearer"))
+            if (tokenStr.Substring(0,6).ToLower()=="bearer")
             {
                 tokenStr = tokenStr.Substring(7);//截取前面的bearer和空格
             }

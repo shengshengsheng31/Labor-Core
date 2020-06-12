@@ -104,7 +104,7 @@
             标题
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Option">
+        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Options">
             <summary>
             选项ABC
             </summary>
