@@ -43,7 +43,8 @@ namespace Labor.Common
                 new Claim(ClaimTypes.Expiration,DateTime.Now.AddHours(24).ToString(CultureInfo.CurrentCulture)),//令牌截止时间
                 new Claim(JwtRegisteredClaimNames.Iss,issuer),//发行人
                 new Claim(JwtRegisteredClaimNames.Aud,audience),//订阅人
-                new Claim(ClaimTypes.Role,tokenModel.Level)//权限
+                new Claim(ClaimTypes.Role,tokenModel.Level),//权限
+                new Claim("Account",tokenModel.Account),//用户名
             };
 
             //秘钥处理
@@ -84,6 +85,8 @@ namespace Labor.Common
     public class TokenModelJwt
     {
         public Guid UserId { get; set; }
+
+        public string Account { get; set; }
 
         public string Level { get; set; }
     }

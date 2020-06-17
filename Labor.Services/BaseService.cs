@@ -1,6 +1,7 @@
 ﻿using Labor.IRepository;
 using Labor.IServices;
 using Labor.Model.Models;
+using Labor.Model.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,9 +48,9 @@ namespace Labor.Services
             return BaseRepository.GetAllByPage(pageSize, pageNumber);
         }
 
-        public IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = false )
+        public IQueryable<TEntity> GetAllByPageOrder(PageViewModel model, bool asc = false )
         {
-            return BaseRepository.GetAllByPageOrder(pageSize, pageNumber, asc);
+            return BaseRepository.GetAllByPageOrder(model.PageSize, model.PageNumber, asc);
         }
 
         public Task<TEntity> GetOneByIdAsync(Guid id)

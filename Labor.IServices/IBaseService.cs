@@ -1,4 +1,5 @@
 ﻿using Labor.Model.Models;
+using Labor.Model.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -79,7 +80,7 @@ namespace Labor.IServices
         /// <param name="pageIndex"></param>
         /// <param name="asc"></param>
         /// <returns></returns>
-        IQueryable<TEntity> GetAllByPageOrder(int pageSize = 10, int pageNumber = 1, bool asc = false);
+        IQueryable<TEntity> GetAllByPageOrder(PageViewModel model, bool asc = false);
 
         /// <summary>
         /// 判断对象是否存在

@@ -23,7 +23,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.CreateLaborHeadViewModel)">
+        <member name="M:Labor.Core.Controllers.LaborDetailController.GetUserLaborChoice(Labor.Model.Models.OneLaborDetailViewModel)">
+            <summary>
+            通过用户Id和劳保Id获取用户的选项
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.EditLaborHeadViewModel)">
             <summary>
             创建一期劳保
             </summary>
@@ -37,10 +44,23 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.LaborHeadController.GetAllLaborHead">
+        <member name="M:Labor.Core.Controllers.LaborHeadController.GetAllLaborHead(Labor.Model.ViewModels.PageViewModel)">
             <summary>
-            获取所有的劳保
+            根据时间分页获取所有的劳保,返回数据及总数
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.GetLaborLatest">
+            <summary>
+            获取最近的一次劳保
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.UpdateLaborHead(Labor.Model.ViewModels.EditLaborHeadViewModel)">
+            <summary>
+            修改一期劳保
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Labor.Core.Controllers.UserController.LoginAsync(Labor.Model.ViewModels.LoginViewModel)">

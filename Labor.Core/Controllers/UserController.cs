@@ -35,9 +35,9 @@ namespace Labor.Core.Controllers
             User user = await _userService.LoginAsync(model);
             if (user == null)
             {
-                return BadRequest("用户不存在");
+                return BadRequest("检查用户名与密码");
             }
-            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString() };
+            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.Account };
             string token = JwtHelper.JwtEncrypt(tokenModel);
             return Ok(token);
         }
@@ -68,7 +68,7 @@ namespace Labor.Core.Controllers
         [HttpGet(nameof(GetAllUser))]
         public IActionResult GetAllUser([FromQuery]PageViewModel model)
         {
-            return Ok(_userService.GetAllByPageOrder(model.PageSize, model.PageNumber));
+            return Ok(_userService.GetAllByPageOrder(model));
         }
 
         /// <summary>

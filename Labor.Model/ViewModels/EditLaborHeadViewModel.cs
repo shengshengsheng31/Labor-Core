@@ -5,8 +5,13 @@ using System.Text;
 
 namespace Labor.Model.ViewModels
 {
-    public class CreateLaborHeadViewModel
+    public class EditLaborHeadViewModel
     {
+        /// <summary>
+        /// 传入Id表示修改
+        /// </summary>
+        public Guid Id { get; set; }
+
         /// <summary>
         /// 标题
         /// </summary>

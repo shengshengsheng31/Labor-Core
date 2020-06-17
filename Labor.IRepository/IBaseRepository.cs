@@ -58,7 +58,7 @@ namespace Labor.IRepository
         IQueryable<TEntity> GetAll();
 
         /// <summary>
-        /// 获取所有数据并排序
+        /// 获取所有数据并根据时间排序
         /// </summary>
         /// <param name="asc"></param>
         /// <returns></returns>

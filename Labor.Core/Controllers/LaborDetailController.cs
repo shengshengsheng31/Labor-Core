@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Labor.Common;
 using Labor.IServices;
+using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,5 +54,17 @@ namespace Labor.Core.Controllers
         {
             return Ok(_laborHeadService.GetAllByHead(model));
         }
+
+        /// <summary>
+        /// 通过用户Id和劳保Id获取用户的选项
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet(nameof(GetUserLaborChoice))]
+        public async Task<IActionResult> GetUserLaborChoice([FromQuery]OneLaborDetailViewModel model)
+        {
+            return Ok(await _laborHeadService.GetLaborDetailByUserAndLaborAsync(model));
+        }
+        
     }
 }

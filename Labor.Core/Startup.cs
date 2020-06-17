@@ -65,8 +65,8 @@ namespace Labor.Core
                     builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
-                    //.WithExposedHeaders("x-custom-header");//自定义请求头
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("Pagination-X");//自定义请求头
                 });
             });
             #endregion

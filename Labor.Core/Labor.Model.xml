@@ -59,6 +59,16 @@
             劳保品
             </summary>
         </member>
+        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.LaborId">
+            <summary>
+            劳保Id
+            </summary>
+        </member>
         <member name="T:Labor.Model.Models.User">
             <summary>
             用户
@@ -99,17 +109,22 @@
             劳保品
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Title">
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Id">
+            <summary>
+            传入Id表示修改
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Title">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Options">
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Options">
             <summary>
             选项ABC
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.CreateLaborHeadViewModel.Goods">
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Goods">
             <summary>
             劳保品
             </summary>
@@ -122,6 +137,11 @@
         <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Title">
             <summary>
             标题
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Id">
+            <summary>
+            Id
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.LoginViewModel.Account">

@@ -53,5 +53,14 @@ namespace Labor.Services
             return  _laborDetailRepository.GetAll().Where(m => m.LaborId == model.LaborId).Include(m=>m.Labor);
         }
 
+        /// <summary>
+        /// 通过用户Id和LaborHead Id 来获取一条已选择的劳保
+        /// </summary>
+        /// <returns></returns>
+        public async Task<LaborDetail> GetLaborDetailByUserAndLaborAsync(OneLaborDetailViewModel model)
+        {
+            return await _laborDetailRepository.GetAll().Where(m => m.UserId == model.UserId && m.LaborId == model.LaborId).FirstOrDefaultAsync();
+        }
+
     }
 }

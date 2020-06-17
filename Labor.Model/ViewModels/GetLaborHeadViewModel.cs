@@ -10,5 +10,10 @@ namespace Labor.Model.ViewModels
         /// 标题
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Id
+        /// </summary>
+        public Guid Id { get; set; }
     }
 }

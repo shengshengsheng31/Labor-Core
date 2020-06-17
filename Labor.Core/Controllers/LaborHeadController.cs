@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Labor.Common;
 using Labor.IServices;
+using Labor.Model.Helpers;
+using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +34,7 @@ namespace Labor.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost(nameof(CreateLaborHead))]
-        public async Task<IActionResult> CreateLaborHead(CreateLaborHeadViewModel model)
+        public async Task<IActionResult> CreateLaborHead(EditLaborHeadViewModel model)
         {
             if (await _laborHeadService.CreateLaborHeadAsync(model))
             {
@@ -51,17 +54,48 @@ namespace Labor.Core.Controllers
         [HttpGet(nameof(GetOneLaborHead))]
         public async Task<IActionResult> GetOneLaborHead([FromQuery]GetLaborHeadViewModel model)
         {
-            return Ok(await _laborHeadService.GetLaborHeadByTitle(model));
+            return Ok(await _laborHeadService.GetOneLaborHead(model));
         }
 
         /// <summary>
-        /// 获取所有的劳保
+        /// 根据时间分页获取所有的劳保,返回数据及总数
         /// </summary>
         /// <returns></returns>
         [HttpGet(nameof(GetAllLaborHead))]
-        public IActionResult GetAllLaborHead()
+        public async Task<IActionResult> GetAllLaborHead([FromQuery]PageViewModel model)
         {
-            return Ok( _laborHeadService.GetAll());
+            PageInfoHelper<LaborHead> result = await _laborHeadService.GetAllLaborAsync(model);
+            Response.Headers.Add("Pagination-X", JsonSerializer.Serialize(result.TotalCount));
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 获取最近的一次劳保
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet(nameof(GetLaborLatest))]
+        public async Task<IActionResult> GetLaborLatest()
+        {
+            return Ok(await _laborHeadService.GetLaborLatest());
+        }
+
+        /// <summary>
+        /// 修改一期劳保
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost(nameof(UpdateLaborHead))]
+        public async Task<IActionResult> UpdateLaborHead(EditLaborHeadViewModel model)
+        {
+            await _laborHeadService.UpdateLaborHeadAsync(model);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery]Guid Id)
+        {
+            await _laborHeadService.RemoveAsync(Id);
+            return Ok();
         }
     }
 }
