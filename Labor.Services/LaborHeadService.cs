@@ -83,7 +83,8 @@ namespace Labor.Services
                 Id = model.Id,
                 Goods = model.Goods,
                 Options = model.Options,
-                UpdateTime = DateTime.Now
+                UpdateTime = DateTime.Now,
+                Title = model.Title
             });
         }
 
