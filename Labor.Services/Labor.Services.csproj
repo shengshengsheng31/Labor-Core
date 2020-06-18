@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetCore.NPOI" Version="1.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Labor.Common\Labor.Common.csproj" />
     <ProjectReference Include="..\Labor.IRepository\Labor.IRepository.csproj" />
     <ProjectReference Include="..\Labor.IServices\Labor.IServices.csproj" />

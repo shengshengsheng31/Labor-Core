@@ -21,12 +21,14 @@ namespace Labor.IServices
         /// 获取劳保通过LaborId
         /// </summary>
         /// <returns></returns>
-        IQueryable GetAllByHead(GetLaborDetailViewModel model);
+        IQueryable<LaborDetailListViewModel> GetAllByHead(GetLaborDetailViewModel model);
 
         /// <summary>
         /// 通过用户Id和LaborHead Id 来获取一条已选择的劳保
         /// </summary>
         /// <returns></returns>
         Task<LaborDetail> GetLaborDetailByUserAndLaborAsync(OneLaborDetailViewModel model);
+
+        byte[] ExlExport(GetLaborDetailViewModel model);
     }
 }

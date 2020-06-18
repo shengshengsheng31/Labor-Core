@@ -65,6 +65,16 @@ namespace Labor.Core.Controllers
         {
             return Ok(await _laborHeadService.GetLaborDetailByUserAndLaborAsync(model));
         }
-        
+
+        /// <summary>
+        /// 导出劳保
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet(nameof(ExportLabor))]
+        public IActionResult ExportLabor([FromQuery]GetLaborDetailViewModel model)
+        {
+            return Ok(_laborHeadService.ExlExport(model));
+        }
     }
 }

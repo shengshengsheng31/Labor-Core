@@ -30,6 +30,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.LaborDetailController.ExportLabor(Labor.Model.ViewModels.GetLaborDetailViewModel)">
+            <summary>
+            导出劳保
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.EditLaborHeadViewModel)">
             <summary>
             创建一期劳保
