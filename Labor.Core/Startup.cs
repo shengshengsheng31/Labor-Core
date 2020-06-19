@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -88,45 +89,46 @@ namespace Labor.Core
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Labor.Model.xml"));
 
                 #region Swagger中的Jwt配置
-                options.OperationFilter<AddResponseHeadersFilter>();
-                options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
-                options.OperationFilter<SecurityRequirementsOperationFilter>();
-                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
-                {
-                    Description = "输入请求头中需要添加Jwt授权Token：Bearer Token",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                });
+                //options.OperationFilter<AddResponseHeadersFilter>();
+                //options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
+                //options.OperationFilter<SecurityRequirementsOperationFilter>();
+                //options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                //{
+                //    Description = "输入请求头中需要添加Jwt授权Token：Bearer Token",
+                //    Name = "Authorization",
+                //    In = ParameterLocation.Header,
+                //    Type = SecuritySchemeType.ApiKey,
+                //});
                 #endregion
             });
             #endregion
 
-            #region 注册Jwt服务
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>
-            {
-                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,//验证秘钥
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:secret"])),
-                    ValidateIssuer = true,//验证发行人
-                    ValidIssuer = Configuration["JwtToken:issuer"],
-                    ValidateAudience = true,//验证订阅人
-                    ValidAudience = Configuration["JwtToken:audience"],
-                    RequireExpirationTime = true,//验证过期时间
-                    ValidateLifetime = true,//验证生命周期
-                    ClockSkew = TimeSpan.Zero//缓冲过期时间，及时配置了过期时间，也要考虑过期时间和缓冲
-                };
-            });
+            #region 注册Jwt服务=>已更改为windows身份验证
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer(x =>
+            //{
+            //    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,//验证秘钥
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:secret"])),
+            //        ValidateIssuer = true,//验证发行人
+            //        ValidIssuer = Configuration["JwtToken:issuer"],
+            //        ValidateAudience = true,//验证订阅人
+            //        ValidAudience = Configuration["JwtToken:audience"],
+            //        RequireExpirationTime = true,//验证过期时间
+            //        ValidateLifetime = true,//验证生命周期
+            //        ClockSkew = TimeSpan.Zero//缓冲过期时间，及时配置了过期时间，也要考虑过期时间和缓冲
+            //    };
+            //});
             #endregion
 
             #region 注册HttpContext存取器服务
             services.AddHttpContextAccessor();
             #endregion
+
         }
 
         //configureContainer访问AutoFac容器生成器，自动注入service和repository

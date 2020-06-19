@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,7 +21,10 @@ namespace Labor.Core.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            IPHostEntry myHost = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+            string domain = myHost.HostName;
+            string domainAccount = HttpContext.User.Identity.Name;
+            return new string[] { domain,domainAccount };
         }
 
         // GET: api/Default/5
@@ -48,5 +52,8 @@ namespace Labor.Core.Controllers
         public void Delete(int id)
         {
         }
+
+
+
     }
 }

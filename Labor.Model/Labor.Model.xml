@@ -34,12 +34,22 @@
             外键劳保品
             </summary>
         </member>
+        <member name="P:Labor.Model.Models.LaborDetail.Option">
+            <summary>
+            选项
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.LaborDetail.Goods">
+            <summary>
+            劳保品
+            </summary>
+        </member>
         <member name="P:Labor.Model.Models.LaborHead.Title">
             <summary>
             名称，默认为当前月+自定义名称
             </summary>
         </member>
-        <member name="P:Labor.Model.Models.LaborHead.Option">
+        <member name="P:Labor.Model.Models.LaborHead.Options">
             <summary>
             选项ABC
             </summary>
@@ -47,6 +57,16 @@
         <member name="P:Labor.Model.Models.LaborHead.Goods">
             <summary>
             劳保品
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.LaborId">
+            <summary>
+            劳保Id
             </summary>
         </member>
         <member name="T:Labor.Model.Models.User">
@@ -69,6 +89,66 @@
             等级
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborDetailViewModel.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborDetailViewModel.LaborId">
+            <summary>
+            某期劳保Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborDetailViewModel.Option">
+            <summary>
+            选项ABC
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateLaborDetailViewModel.Goods">
+            <summary>
+            劳保品
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Id">
+            <summary>
+            传入Id表示修改
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Options">
+            <summary>
+            选项ABC
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Goods">
+            <summary>
+            劳保品
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborDetailViewModel.LaborId">
+            <summary>
+            劳保期数Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborDetailViewModel.Title">
+            <summary>
+            劳保标题
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.LoginViewModel.Account">
             <summary>
             登录帐号
@@ -77,6 +157,16 @@
         <member name="P:Labor.Model.ViewModels.LoginViewModel.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.PageViewModel.PageNumber">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.PageViewModel.PageSize">
+            <summary>
+            每页数量
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.RegisterViewModel.Account">
