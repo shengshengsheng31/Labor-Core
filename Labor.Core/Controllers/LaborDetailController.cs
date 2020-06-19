@@ -74,7 +74,7 @@ namespace Labor.Core.Controllers
         [HttpGet(nameof(ExportLabor))]
         public IActionResult ExportLabor([FromQuery]GetLaborDetailViewModel model)
         {
-            return Ok(_laborHeadService.ExlExport(model));
+            return File(_laborHeadService.ExlExport(model), "application/ms-excel", $"{model.Title}-{DateTime.Today}.xlsx");
         }
     }
 }

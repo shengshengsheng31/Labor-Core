@@ -80,8 +80,9 @@ namespace Labor.Services
             List<LaborDetailListViewModel> list = GetAllByHead(model).ToList();
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("sheet");
-            IRow Title = null;
+            IRow titleRow = sheet.CreateRow(0);
             IRow rows = null;
+            //获取访问属性
             Type entityType = list[0].GetType();
             PropertyInfo[] entityProperties = entityType.GetProperties();
 
@@ -89,17 +90,23 @@ namespace Labor.Services
             {
                 if (i == 0)
                 {
-                    Title = sheet.CreateRow(0);
-                    Title.CreateCell(0).SetCellValue("序号");
+                    //标题行
+                    titleRow.CreateCell(0).SetCellValue("序号");
+                    titleRow.CreateCell(1).SetCellValue("用户");
+                    titleRow.CreateCell(2).SetCellValue("选项");
+                    titleRow.CreateCell(3).SetCellValue("劳保");
                 }
                 else
                 {
+                    //正文行
                     rows = sheet.CreateRow(i);
                     object entity = list[i - 1];
+                    //遍历列
                     for (int j = 1; j <= entityProperties.Length; j++)
                     {
+                        //使用对象，不需要指定类型
                         object[] entityValues = new object[entityProperties.Length];
-                        entityValues[j - 1] = entityProperties[j - 1].GetValue(entity);
+                        entityValues[j - 1] = entityProperties[j - 1].GetValue(entity) is null?"":entityProperties[j - 1].GetValue(entity);
                         rows.CreateCell(0).SetCellValue(i);
                         rows.CreateCell(j).SetCellValue(entityValues[j - 1].ToString());
                     }
@@ -113,7 +120,6 @@ namespace Labor.Services
                 buffer = ms.ToArray();
                 ms.Close();
             }
-
             return buffer;
         }
     } 
