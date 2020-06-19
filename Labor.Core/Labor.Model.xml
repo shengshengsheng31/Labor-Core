@@ -134,6 +134,11 @@
             劳保期数Id
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.GetLaborDetailViewModel.Title">
+            <summary>
+            劳保标题
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.GetLaborHeadViewModel.Title">
             <summary>
             标题
