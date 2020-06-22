@@ -11,13 +11,11 @@ namespace Labor.Model.ViewModels
         /// <summary>
         /// 页码
         /// </summary>
-        [Required]
         public int PageNumber { get; set; } = 1;
 
         /// <summary>
         /// 每页数量
         /// </summary>
-        [Required]
         public int PageSize { get; set; } = 20;
     }
 }

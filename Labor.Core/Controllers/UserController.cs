@@ -73,9 +73,9 @@ namespace Labor.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpGet(nameof(GetAllUser))]
-        public IActionResult GetAllUser([FromQuery]PageViewModel model)
+        public IActionResult GetAllUser([FromQuery]GetUserViewModel model)
         {
-            return Ok(_userService.GetAllByPageOrder(model));
+            return Ok(_userService.GetAllUser(model));
         }
 
         /// <summary>

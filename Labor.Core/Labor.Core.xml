@@ -110,9 +110,9 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.UserController.GetAllUser(Labor.Model.ViewModels.PageViewModel)">
+        <member name="M:Labor.Core.Controllers.UserController.GetAllUser(Labor.Model.ViewModels.GetUserViewModel)">
             <summary>
-            获取所有用户
+            根据部门获取所有用户
             </summary>
             <param name="model"></param>
             <returns></returns>

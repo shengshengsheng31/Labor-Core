@@ -149,6 +149,11 @@
             Id
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.GetUserViewModel.DeptId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.LoginViewModel.DomainAccount">
             <summary>
             登录帐号

@@ -2,6 +2,7 @@
 using Labor.Model.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,11 @@ namespace Labor.IServices
         /// <returns></returns>
         Task<bool> RegisterAsync(RegisterViewModel model);
 
-        
+        /// <summary>
+        /// 获取所有用户
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+       IQueryable GetAllUser(GetUserViewModel model);
     }
 }
