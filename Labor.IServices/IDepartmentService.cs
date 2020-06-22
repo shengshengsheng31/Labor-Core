@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Labor.IServices
 {
-    public interface IUserService:IBaseService<User>
+    public interface IDepartmentService:IBaseService<Department>
     {
         /// <summary>
-        /// 用户登录
+        /// 创建部门
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<User> LoginAsync(LoginViewModel model);
+        Task<bool> CreateDept(CreateDeptViewModel model);
 
         /// <summary>
-        /// 注册用户
+        /// 修改部门
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> RegisterAsync(RegisterViewModel model);
+        Task UpdateDept(UpdateDeptViewModel model);
     }
 }

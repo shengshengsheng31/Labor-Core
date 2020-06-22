@@ -4,9 +4,36 @@
         <name>Labor.Core</name>
     </assembly>
     <members>
-        <member name="M:Labor.Core.Controllers.DefaultController.Get">
+        <member name="M:Labor.Core.Controllers.DefaultController.Get(System.String)">
             <summary>
             默认的get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.DepartmentController.CreateDept(Labor.Model.ViewModels.CreateDeptViewModel)">
+            <summary>
+            创建部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.DepartmentController.UpdateDept(Labor.Model.ViewModels.UpdateDeptViewModel)">
+            <summary>
+            修改部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.DepartmentController.Delete(System.Guid)">
+            <summary>
+            删除部门，将级联删除所关联的人员
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.DepartmentController.GetAllDepartment">
+            <summary>
+            获取所有部门
             </summary>
             <returns></returns>
         </member>
@@ -23,7 +50,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.LaborDetailController.GetUserLaborChoice(Labor.Model.Models.OneLaborDetailViewModel)">
+        <member name="M:Labor.Core.Controllers.LaborDetailController.GetUserLaborChoice(Labor.Model.ViewModels.OneLaborDetailViewModel)">
             <summary>
             通过用户Id和劳保Id获取用户的选项
             </summary>
@@ -95,6 +122,13 @@
             验证Jwt
             </summary>
             <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.VerifyUser(System.String)">
+            <summary>
+            windows验证用户域账号
+            </summary>
+            <param name="callback"></param>
             <returns></returns>
         </member>
     </members>

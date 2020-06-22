@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Labor.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -8,24 +9,28 @@ namespace Labor.Model.ViewModels
     public class RegisterViewModel
     {
         /// <summary>
-        /// 帐号
+        /// 域帐号
         /// </summary>
         [Required]
         [StringLength(50)]
-        public string Account { get; set; }
+        public string DomainAccount { get; set; }
 
         /// <summary>
-        /// 密码
+        /// 员工姓名
         /// </summary>
         [Required]
-        [StringLength(50,MinimumLength =2)]
-        public string Password { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// 确认密码
+        /// 部门
         /// </summary>
         [Required]
-        [Compare(nameof(Password))]
-        public string PasswordConfirm { get; set; }
+        public Guid DepartmentId { get; set; }
+
+        /// <summary>
+        /// 权限
+        /// </summary>
+        [Required]
+        public Level Level { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Cache;
 
 namespace Labor.Model.Models
@@ -10,30 +11,39 @@ namespace Labor.Model.Models
     public class User:BaseEntity
     {
         /// <summary>
+        /// 域账号
+        /// </summary>
+        [Required]
+        [StringLength(50)]
+        public string DomainAccount { get; set; }
+
+        /// <summary>
         /// 用户名
         /// </summary>
         [Required]
-        [StringLength(50)]
-        public string Account { get; set; }
-
-        /// <summary>
-        /// 密码
-        /// </summary>
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// 等级
         /// </summary>
         [Required]
         public Level Level { get; set; } = Level.user;
+
+        /// <summary>
+        /// 部门
+        /// </summary>
+        [Required]
+        public Guid DepartmentId { get; set; }
+
+        [ForeignKey(nameof(DepartmentId))]
+        public Department Department { get; set; }
     }
 
     public enum Level
     {
         user=0,
-        admin = 1
+        deptManager = 1,
+        admin=2
     }
 
 }

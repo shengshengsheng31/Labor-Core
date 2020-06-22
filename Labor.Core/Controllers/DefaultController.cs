@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NPOI.SS.Formula.Functions;
 
 namespace Labor.Core.Controllers
 {
@@ -18,13 +20,14 @@ namespace Labor.Core.Controllers
         /// </summary>
         /// <returns></returns>
         // GET: api/Default
+        [Authorize]
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get(string callback)
         {
             IPHostEntry myHost = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
             string domain = myHost.HostName;
-            string domainAccount = HttpContext.User.Identity.Name;
-            return new string[] { domain,domainAccount };
+            string domainAccount =JsonSerializer.Serialize(HttpContext.User.Identity.Name);
+            return Ok($"{callback}({domainAccount})");
         }
 
         // GET: api/Default/5

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Labor.Model.Models
+namespace Labor.Model.ViewModels
 {
     public class OneLaborDetailViewModel
     {

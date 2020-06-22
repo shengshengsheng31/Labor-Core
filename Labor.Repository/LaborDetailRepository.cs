@@ -33,7 +33,7 @@ namespace Labor.Repository
                                                           orderby laborDetail.Goods
                                                           select new LaborDetailListViewModel
                                                           {
-                                                              Account = user.Account,
+                                                              Account = user.UserName,
                                                               Option = laborDetail.Option,
                                                               Goods = laborDetail.Goods
                                                           };

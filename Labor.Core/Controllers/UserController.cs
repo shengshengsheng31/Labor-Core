@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Labor.Common;
 using Labor.IServices;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Razor.Language;
 
 namespace Labor.Core.Controllers
@@ -37,7 +40,7 @@ namespace Labor.Core.Controllers
             {
                 return BadRequest("检查用户名与密码");
             }
-            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.Account };
+            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.UserName };
             string token = JwtHelper.JwtEncrypt(tokenModel);
             return Ok(token);
         }
@@ -83,5 +86,18 @@ namespace Labor.Core.Controllers
             return Ok(JwtHelper.JwtDecrypt(token));
         }
 
+        /// <summary>
+        /// windows验证用户域账号
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet(nameof(VerifyUser))]
+        public IActionResult VerifyUser(string callback)
+        {
+            string name = JsonSerializer.Serialize(HttpContext.User.Identity.Name);
+
+            return Ok($"{callback}({name})");
+        }
     }
 }

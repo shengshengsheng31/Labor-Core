@@ -4,6 +4,7 @@ using Labor.IServices;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,28 +22,42 @@ namespace Labor.Services
             BaseRepository = userRepository;
         }
 
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<User> LoginAsync(LoginViewModel model)
         {
             string pwd = Md5Helper.Md5Encrypt(model.Password);
-            return await _userRepository.GetAll().FirstOrDefaultAsync(m => m.Account == model.Account && m.Password == pwd);
+            return await _userRepository.GetAll().FirstOrDefaultAsync(m => m.UserName == model.Account );
         }
 
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<bool> RegisterAsync(RegisterViewModel model)
         {
-            if (await _userRepository.GetAll().AnyAsync(m => m.Account == model.Account))
+            //存在域账号
+            if (await _userRepository.GetAll().AnyAsync(m => m.DomainAccount == model.DomainAccount))
             {
                 return false;
             }
             else
             {
-                string pwd = Md5Helper.Md5Encrypt(model.Password);
                 await _userRepository.CreateAsync(new User
                 {
-                    Account = model.Account,
-                    Password = pwd
+                    DomainAccount = model.DomainAccount,
+                    UserName = model.Name,
+                    DepartmentId = model.DepartmentId,
+                    Level = model.Level,
                 });
                 return true;
             }
         }
+
+
     }
 }
