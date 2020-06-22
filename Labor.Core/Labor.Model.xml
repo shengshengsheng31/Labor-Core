@@ -149,14 +149,9 @@
             Id
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.LoginViewModel.Account">
+        <member name="P:Labor.Model.ViewModels.LoginViewModel.DomainAccount">
             <summary>
             登录帐号
-            </summary>
-        </member>
-        <member name="P:Labor.Model.ViewModels.LoginViewModel.Password">
-            <summary>
-            密码
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.OneLaborDetailViewModel.UserId">

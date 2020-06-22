@@ -36,15 +36,15 @@ namespace Labor.Common
             //claim信息
             var claims = new List<Claim>
             {
+                //new Claim(JwtRegisteredClaimNames.Iat,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),//令牌签发时间
+                //new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),//不早于的时间
+                //new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddHours(24)).ToUnixTimeSeconds()}"),//令牌过期时间
+                //new Claim(ClaimTypes.Expiration,DateTime.Now.AddHours(24).ToString(CultureInfo.CurrentCulture)),//令牌截止时间
+                //new Claim(JwtRegisteredClaimNames.Iss,issuer),//发行人
+                //new Claim(JwtRegisteredClaimNames.Aud,audience),//订阅人
                 new Claim(JwtRegisteredClaimNames.Jti,tokenModel.UserId.ToString()),//Jwt唯一标识
-                new Claim(JwtRegisteredClaimNames.Iat,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),//令牌签发时间
-                new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}"),//不早于的时间
-                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddHours(24)).ToUnixTimeSeconds()}"),//令牌过期时间
-                new Claim(ClaimTypes.Expiration,DateTime.Now.AddHours(24).ToString(CultureInfo.CurrentCulture)),//令牌截止时间
-                new Claim(JwtRegisteredClaimNames.Iss,issuer),//发行人
-                new Claim(JwtRegisteredClaimNames.Aud,audience),//订阅人
-                new Claim(ClaimTypes.Role,tokenModel.Level),//权限
-                new Claim("Account",tokenModel.Account),//用户名
+                new Claim("UserRole",tokenModel.Level),//权限
+                new Claim("UserName",tokenModel.Account),//用户名
             };
 
             //秘钥处理

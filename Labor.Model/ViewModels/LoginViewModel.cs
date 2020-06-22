@@ -11,12 +11,7 @@ namespace Labor.Model.ViewModels
         /// 登录帐号
         /// </summary>
         [Required]
-        public string Account { get; set; }
+        public string DomainAccount { get; set; }
 
-        /// <summary>
-        /// 密码
-        /// </summary>
-        [Required]
-        public string Password { get; set; }
     }
 }

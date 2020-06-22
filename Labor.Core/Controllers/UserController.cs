@@ -23,7 +23,7 @@ namespace Labor.Core.Controllers
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             IHttpContextAccessor accessor = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
-            if (accessor.HttpContext.Request.Path.Value != "/api/user/login")
+            if (accessor.HttpContext.Request.Path.Value != "/api/User/Login")
             {
                 _userId = JwtHelper.JwtDecrypt(accessor.HttpContext.Request.Headers["Authorization"]).UserId;
             }
@@ -32,17 +32,21 @@ namespace Labor.Core.Controllers
         /// 登录
         /// </summary>
         /// <returns></returns>
-        [HttpPost("Login")]
-        public async Task<IActionResult> LoginAsync([FromBody]LoginViewModel model)
+        [Authorize]
+        [HttpGet("Login")]
+        public async Task<IActionResult> LoginAsync(string callback)
         {
-            User user = await _userService.LoginAsync(model);
+            string domainAccount = HttpContext.User.Identity.Name.Split('\\')[1];
+            User user = await _userService.LoginAsync(new LoginViewModel { DomainAccount=domainAccount});
+
             if (user == null)
             {
-                return BadRequest("检查用户名与密码");
+                return BadRequest($"用户{domainAccount}不存在");
             }
             TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.UserName };
-            string token = JwtHelper.JwtEncrypt(tokenModel);
-            return Ok(token);
+            string token =JwtHelper.JwtEncrypt(tokenModel);
+            token = JsonSerializer.Serialize(token);
+            return Ok($"{callback}({token})");
         }
 
         /// <summary>
@@ -64,7 +68,7 @@ namespace Labor.Core.Controllers
         }
 
         /// <summary>
-        /// 获取所有用户
+        /// 根据部门获取所有用户
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -95,9 +99,12 @@ namespace Labor.Core.Controllers
         [HttpGet(nameof(VerifyUser))]
         public IActionResult VerifyUser(string callback)
         {
-            string name = JsonSerializer.Serialize(HttpContext.User.Identity.Name);
+            string doaminAccount = HttpContext.User.Identity.Name;
 
-            return Ok($"{callback}({name})");
+            //string domainAccount = JsonSerializer.Serialize(HttpContext.User.Identity.Name);
+            
+            
+            return Ok($"{callback}({123})");
         }
     }
 }

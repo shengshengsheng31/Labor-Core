@@ -29,8 +29,7 @@ namespace Labor.Services
         /// <returns></returns>
         public async Task<User> LoginAsync(LoginViewModel model)
         {
-            string pwd = Md5Helper.Md5Encrypt(model.Password);
-            return await _userRepository.GetAll().FirstOrDefaultAsync(m => m.UserName == model.Account );
+            return await _userRepository.GetAll().FirstOrDefaultAsync(m => m.DomainAccount == model.DomainAccount );
         }
 
         /// <summary>

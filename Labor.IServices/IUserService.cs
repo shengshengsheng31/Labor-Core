@@ -22,5 +22,7 @@ namespace Labor.IServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task<bool> RegisterAsync(RegisterViewModel model);
+
+        
     }
 }

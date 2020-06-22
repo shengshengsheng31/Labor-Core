@@ -97,7 +97,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.UserController.LoginAsync(Labor.Model.ViewModels.LoginViewModel)">
+        <member name="M:Labor.Core.Controllers.UserController.LoginAsync(System.String)">
             <summary>
             登录
             </summary>
