@@ -1,6 +1,7 @@
 ﻿using Labor.Common;
 using Labor.IRepository;
 using Labor.IServices;
+using Labor.Model.Helpers;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ namespace Labor.Services
         public async Task<bool> RegisterAsync(RegisterViewModel model)
         {
             //存在域账号
-            if (await _userRepository.GetAll().AnyAsync(m => m.DomainAccount == model.DomainAccount))
+            if (await _userRepository.GetAll().AnyAsync(m => m.DomainAccount == model.DomainAccount || m.EmpNo == model.EmpNo))
             {
                 return false;
             }
@@ -50,9 +51,10 @@ namespace Labor.Services
                 await _userRepository.CreateAsync(new User
                 {
                     DomainAccount = model.DomainAccount,
-                    UserName = model.Name,
+                    UserName = model.UserName,
                     DepartmentId = model.DepartmentId,
                     Level = model.Level,
+                    EmpNo = model.EmpNo,
                 });
                 return true;
             }
@@ -63,16 +65,32 @@ namespace Labor.Services
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public  IQueryable GetAllUser(GetUserViewModel model)
+        public async Task<PageInfoHelper<User>>  GetAllUser(GetUserViewModel model)
         {
-            IQueryable<User> result = _userRepository.GetAllByPageOrder(model.PageSize, model.PageNumber);
+            IQueryable<User> result = _userRepository.GetAllByOrder().Include(m=>m.Department);
             if (model.DeptId != Guid.Empty)
             {
-                result = result.Where(m => m.DepartmentId == model.DeptId).Include(m=>m.Department);
+                result = result.Where(m => m.DepartmentId == model.DeptId);
             }
-            return result;
+            return await PageInfoHelper<User>.CreatePageMsgAsync(result, model.PageNumber, model.PageSize);
         }
 
-
+        /// <summary>
+        /// 修改用户权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task UpdateRole(UpdateRoleViewModel model)
+        {
+            await _userRepository.EditAsync(new User
+            {
+                Id = model.Id,
+                Level = model.Level,
+                DepartmentId = model.DepartmentId,
+                DomainAccount =model.DomainAccount,
+                EmpNo = model.EmpNo,
+                UserName = model.UserName
+            });
+        }
     }
 }

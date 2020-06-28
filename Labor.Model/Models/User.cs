@@ -24,6 +24,11 @@ namespace Labor.Model.Models
         public string UserName { get; set; }
 
         /// <summary>
+        /// 工号
+        /// </summary>
+        public int EmpNo { get; set; }
+
+        /// <summary>
         /// 等级
         /// </summary>
         [Required]

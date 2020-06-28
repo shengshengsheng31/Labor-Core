@@ -97,6 +97,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.LaborHeadController.Delete(System.Guid)">
+            <summary>
+            删除劳保
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Labor.Core.Controllers.UserController.LoginAsync(System.String)">
             <summary>
             登录
@@ -129,6 +136,20 @@
             windows验证用户域账号
             </summary>
             <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.Delete(System.Guid)">
+            <summary>
+            根据Id删除用户
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.ChangeRole(Labor.Model.ViewModels.UpdateRoleViewModel)">
+            <summary>
+            修改用户权限
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
     </members>

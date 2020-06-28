@@ -79,6 +79,11 @@
             用户名
             </summary>
         </member>
+        <member name="P:Labor.Model.Models.User.EmpNo">
+            <summary>
+            工号
+            </summary>
+        </member>
         <member name="P:Labor.Model.Models.User.Level">
             <summary>
             等级
@@ -184,7 +189,12 @@
             域帐号
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.RegisterViewModel.Name">
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.EmpNo">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.UserName">
             <summary>
             员工姓名
             </summary>
@@ -207,6 +217,36 @@
         <member name="P:Labor.Model.ViewModels.UpdateDeptViewModel.Id">
             <summary>
             需要修改的部门Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.DomainAccount">
+            <summary>
+            域账号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.EmpNo">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.Level">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.DepartmentId">
+            <summary>
+            部门
             </summary>
         </member>
     </members>

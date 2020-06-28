@@ -1,42 +1,41 @@
 ﻿using Labor.Model.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Labor.Model.ViewModels
 {
-    public class RegisterViewModel
+    public class UpdateRoleViewModel
     {
         /// <summary>
-        /// 域帐号
+        /// Id
         /// </summary>
-        [Required]
-        [StringLength(50)]
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// 域账号
+        /// </summary>
         public string DomainAccount { get; set; }
+
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
 
         /// <summary>
         /// 工号
         /// </summary>
-        [Required]
         public int EmpNo { get; set; }
 
         /// <summary>
-        /// 员工姓名
+        /// 等级
         /// </summary>
-        [Required]
-        public string UserName { get; set; }
+        public Level Level { get; set; } = Level.user;
 
         /// <summary>
         /// 部门
         /// </summary>
-        [Required]
         public Guid DepartmentId { get; set; }
 
-        /// <summary>
-        /// 权限
-        /// </summary>
-        [Required]
-        public Level Level { get; set; } = Level.user;
     }
 }

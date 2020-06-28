@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Labor.Common;
 using Labor.IServices;
+using Labor.Model.Helpers;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Razor.Language;
+using NPOI.SS.Formula.Functions;
 
 namespace Labor.Core.Controllers
 {
@@ -73,9 +75,11 @@ namespace Labor.Core.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpGet(nameof(GetAllUser))]
-        public IActionResult GetAllUser([FromQuery]GetUserViewModel model)
+        public async Task<IActionResult> GetAllUser([FromQuery]GetUserViewModel model)
         {
-            return Ok(_userService.GetAllUser(model));
+            PageInfoHelper<User> result = await _userService.GetAllUser(model);
+            Response.Headers.Add("Pagination-X", JsonSerializer.Serialize(result.TotalCount));
+            return Ok(result);
         }
 
         /// <summary>
@@ -105,6 +109,30 @@ namespace Labor.Core.Controllers
             
             
             return Ok($"{callback}({123})");
+        }
+
+        /// <summary>
+        /// 根据Id删除用户
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] Guid Id)
+        {
+            await _userService.RemoveAsync(Id);
+            return Ok();
+        }
+
+        /// <summary>
+        /// 修改用户权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost(nameof(ChangeRole))]
+        public async Task<IActionResult> ChangeRole([FromBody] UpdateRoleViewModel model)
+        {
+            await _userService.UpdateRole(model);
+            return Ok();
         }
     }
 }

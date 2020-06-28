@@ -1,4 +1,5 @@
-﻿using Labor.Model.Models;
+﻿using Labor.Model.Helpers;
+using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,15 @@ namespace Labor.IServices
         /// <summary>
         /// 获取所有用户
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-       IQueryable GetAllUser(GetUserViewModel model);
+        Task<PageInfoHelper<User>> GetAllUser(GetUserViewModel model);
+
+        /// <summary>
+        /// 修改用户权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task UpdateRole(UpdateRoleViewModel model);
     }
 }

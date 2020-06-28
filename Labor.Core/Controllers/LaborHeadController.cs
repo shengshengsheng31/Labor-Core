@@ -91,6 +91,11 @@ namespace Labor.Core.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// 删除劳保
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery]Guid Id)
         {
