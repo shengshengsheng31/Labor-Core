@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labor.Model.Migrations
 {
     [DbContext(typeof(LaborContext))]
-    [Migration("20200623011351_AddEmpNo")]
-    partial class AddEmpNo
+    [Migration("20200629081506_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

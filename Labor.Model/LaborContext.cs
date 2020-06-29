@@ -16,6 +16,7 @@ namespace Labor.Model
         public DbSet<User> User { get; set; }
         public DbSet<LaborHead> LaborHead { get; set; }
         public DbSet<LaborDetail> LaborDetail { get; set; }
+        public DbSet<Department> Department { get; set; }
 
     }
 }

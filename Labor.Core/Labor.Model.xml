@@ -114,6 +114,36 @@
             劳保品
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.CreateMenuViewModel.MenuName">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateMenuViewModel.Index">
+            <summary>
+            菜单序号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateMenuViewModel.Url">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateMenuViewModel.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateMenuViewModel.ParentMenu">
+            <summary>
+            父级菜单
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.CreateRoleViewModel.RoleName">
+            <summary>
+            角色名
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.EditLaborHeadViewModel.Id">
             <summary>
             传入Id表示修改

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Labor.Model.Models
+namespace Labor.Model.ViewModels
 {
-    public class Role:BaseEntity
+    public class CreateRoleViewModel
     {
         /// <summary>
-        /// 角色名称
+        /// 角色名
         /// </summary>
         public string RoleName { get; set; }
     }

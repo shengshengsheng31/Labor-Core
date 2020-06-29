@@ -16,6 +16,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200623011351_AddEmpNo.cs" />
+    <Compile Remove="Migrations\20200623011351_AddEmpNo.Designer.cs" />
+    <Compile Remove="Migrations\20200629015515_Init.cs" />
+    <Compile Remove="Migrations\20200629015515_Init.Designer.cs" />
+    <Compile Remove="Migrations\20200629031459_ChangeId2Menu.cs" />
+    <Compile Remove="Migrations\20200629031459_ChangeId2Menu.Designer.cs" />
+    <Compile Remove="Migrations\20200629080805_Reset.cs" />
+    <Compile Remove="Migrations\20200629080805_Reset.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
