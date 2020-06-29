@@ -43,7 +43,7 @@ namespace Labor.Common
                 //new Claim(JwtRegisteredClaimNames.Iss,issuer),//发行人
                 //new Claim(JwtRegisteredClaimNames.Aud,audience),//订阅人
                 new Claim(JwtRegisteredClaimNames.Jti,tokenModel.UserId.ToString()),//Jwt唯一标识
-                new Claim("UserRole",tokenModel.Level),//权限
+                new Claim("Role",tokenModel.Level),//权限
                 new Claim("UserName",tokenModel.Account),//用户名
             };
 

@@ -46,7 +46,7 @@ namespace Labor.Model.Models
 
     public enum Level
     {
-        user=0,
+        user = 0,
         deptManager = 1,
         admin=2
     }

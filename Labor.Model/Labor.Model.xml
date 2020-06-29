@@ -24,6 +24,11 @@
             更新时间
             </summary>
         </member>
+        <member name="P:Labor.Model.Models.Department.DeptName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
         <member name="P:Labor.Model.Models.LaborDetail.UserId">
             <summary>
             外键用户
@@ -59,34 +64,34 @@
             劳保品
             </summary>
         </member>
-        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.UserId">
-            <summary>
-            用户Id
-            </summary>
-        </member>
-        <member name="P:Labor.Model.Models.OneLaborDetailViewModel.LaborId">
-            <summary>
-            劳保Id
-            </summary>
-        </member>
         <member name="T:Labor.Model.Models.User">
             <summary>
             用户
             </summary>
         </member>
-        <member name="P:Labor.Model.Models.User.Account">
+        <member name="P:Labor.Model.Models.User.DomainAccount">
+            <summary>
+            域账号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.User.UserName">
             <summary>
             用户名
             </summary>
         </member>
-        <member name="P:Labor.Model.Models.User.Password">
+        <member name="P:Labor.Model.Models.User.EmpNo">
             <summary>
-            密码
+            工号
             </summary>
         </member>
         <member name="P:Labor.Model.Models.User.Level">
             <summary>
             等级
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.User.DepartmentId">
+            <summary>
+            部门
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.CreateLaborDetailViewModel.UserId">
@@ -149,14 +154,24 @@
             Id
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.LoginViewModel.Account">
+        <member name="P:Labor.Model.ViewModels.GetUserViewModel.DeptId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.LoginViewModel.DomainAccount">
             <summary>
             登录帐号
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.LoginViewModel.Password">
+        <member name="P:Labor.Model.ViewModels.OneLaborDetailViewModel.UserId">
             <summary>
-            密码
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.OneLaborDetailViewModel.LaborId">
+            <summary>
+            劳保Id
             </summary>
         </member>
         <member name="P:Labor.Model.ViewModels.PageViewModel.PageNumber">
@@ -169,19 +184,69 @@
             每页数量
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.RegisterViewModel.Account">
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.DomainAccount">
             <summary>
-            帐号
+            域帐号
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.RegisterViewModel.Password">
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.EmpNo">
             <summary>
-            密码
+            工号
             </summary>
         </member>
-        <member name="P:Labor.Model.ViewModels.RegisterViewModel.PasswordConfirm">
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.UserName">
             <summary>
-            确认密码
+            员工姓名
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.DepartmentId">
+            <summary>
+            部门
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.RegisterViewModel.Level">
+            <summary>
+            权限
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateDeptViewModel.DeptName">
+            <summary>
+            修改后的部门名
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateDeptViewModel.Id">
+            <summary>
+            需要修改的部门Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.DomainAccount">
+            <summary>
+            域账号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.EmpNo">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.Level">
+            <summary>
+            等级
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.DepartmentId">
+            <summary>
+            部门
             </summary>
         </member>
     </members>
