@@ -77,7 +77,13 @@ namespace Labor.Services
         public byte[] ExlExport(GetLaborDetailViewModel model)
         {
 
-            List<LaborDetailListViewModel> list = GetAllByHead(model).ToList();
+            var list = GetAllByHead(model).Select(m => new
+            {
+                m.Account,
+                m.Department,
+                m.Option,
+                m.Goods
+            }).ToList();
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("sheet");
             IRow titleRow = sheet.CreateRow(0);
@@ -93,8 +99,9 @@ namespace Labor.Services
                     //标题行
                     titleRow.CreateCell(0).SetCellValue("序号");
                     titleRow.CreateCell(1).SetCellValue("用户");
-                    titleRow.CreateCell(2).SetCellValue("选项");
-                    titleRow.CreateCell(3).SetCellValue("劳保");
+                    titleRow.CreateCell(2).SetCellValue("部门");
+                    titleRow.CreateCell(3).SetCellValue("选项");
+                    titleRow.CreateCell(4).SetCellValue("劳保");
                 }
                 else
                 {

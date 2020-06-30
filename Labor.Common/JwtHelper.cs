@@ -45,6 +45,7 @@ namespace Labor.Common
                 new Claim(JwtRegisteredClaimNames.Jti,tokenModel.UserId.ToString()),//Jwt唯一标识
                 new Claim("Role",tokenModel.Level),//权限
                 new Claim("UserName",tokenModel.Account),//用户名
+                new Claim("DeptId",tokenModel.DeptId.ToString())//部门Id
             };
 
             //秘钥处理
@@ -89,5 +90,7 @@ namespace Labor.Common
         public string Account { get; set; }
 
         public string Level { get; set; }
+
+        public Guid DeptId { get; set; }
     }
 }

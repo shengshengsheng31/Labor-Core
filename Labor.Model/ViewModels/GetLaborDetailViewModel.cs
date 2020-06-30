@@ -15,5 +15,10 @@ namespace Labor.Model.ViewModels
         /// 劳保标题
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// 部门Id
+        /// </summary>
+        public Guid DeptId { get; set; }
     }
 }

@@ -34,9 +34,16 @@ namespace Labor.Repository
                                                           select new LaborDetailListViewModel
                                                           {
                                                               Account = user.UserName,
+                                                              Department = user.Department.DeptName,
+                                                              DepartmentId = user.DepartmentId,
                                                               Option = laborDetail.Option,
-                                                              Goods = laborDetail.Goods
+                                                              Goods = laborDetail.Goods,
+                                                             
                                                           };
+            if (model.DeptId != Guid.Empty)
+            {
+                result = result.Where(m => m.DepartmentId == model.DeptId);
+            }
             return result;
         }
     }

@@ -9,5 +9,7 @@ namespace Labor.Model.ViewModels
         public string Account { get; set; }
         public string Option { get; set; }
         public string Goods { get; set; }
+        public string Department { get; set; }
+        public Guid DepartmentId { get; set; }
     }
 }

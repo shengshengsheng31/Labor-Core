@@ -45,7 +45,7 @@ namespace Labor.Core.Controllers
             {
                 return BadRequest($"用户{domainAccount}不存在");
             }
-            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.UserName };
+            TokenModelJwt tokenModel = new TokenModelJwt { UserId=user.Id,Level=user.Level.ToString(),Account=user.UserName,DeptId=user.DepartmentId };
             string token =JwtHelper.JwtEncrypt(tokenModel);
             token = JsonSerializer.Serialize(token);
             return Ok($"{callback}({token})");
