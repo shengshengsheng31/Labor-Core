@@ -1,4 +1,5 @@
-﻿using Labor.Model.Models;
+﻿using Labor.Model.Helpers;
+using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,25 @@ namespace Labor.IServices
         /// <returns></returns>
         Task<LaborDetail> GetLaborDetailByUserAndLaborAsync(OneLaborDetailViewModel model);
 
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         byte[] ExlExport(GetLaborDetailViewModel model);
+
+        /// <summary>
+        /// 分页获取
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<PageInfoHelper<LaborDetailListViewModel>> GetAllByHeadPage(GetLaborDetailViewModel model);
+
+        /// <summary>
+        /// 设置默认劳保
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task SetDefaultLabor(DefaultLaborViewModel model);
     }
 }

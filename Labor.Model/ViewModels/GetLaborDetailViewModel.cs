@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labor.Model.ViewModels
 {
-    public class GetLaborDetailViewModel
+    public class GetLaborDetailViewModel:PageViewModel
     {
         /// <summary>
         /// 劳保期数Id

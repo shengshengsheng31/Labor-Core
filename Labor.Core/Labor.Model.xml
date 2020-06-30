@@ -24,6 +24,26 @@
             更新时间
             </summary>
         </member>
+        <member name="P:Labor.Model.Models.DefaultLaborViewModel.DeptId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.DefaultLaborViewModel.Option">
+            <summary>
+            选项
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.DefaultLaborViewModel.Goods">
+            <summary>
+            劳保品
+            </summary>
+        </member>
+        <member name="P:Labor.Model.Models.DefaultLaborViewModel.LaborId">
+            <summary>
+            劳保Id
+            </summary>
+        </member>
         <member name="P:Labor.Model.Models.Department.DeptName">
             <summary>
             部门名称

@@ -1,6 +1,7 @@
 ﻿using Labor.IRepository;
 using Labor.IServices;
 using Labor.Model;
+using Labor.Model.Helpers;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +35,12 @@ namespace Labor.Services
         /// <returns></returns>
         public async Task<bool> CreateLaborDetailAsync(CreateLaborDetailViewModel model)
         {
-            if (await _laborDetailRepository.GetAll().AnyAsync(m => m.UserId == model.UserId && m.LaborId == model.LaborId))
+            LaborDetail existLaborDetail = await _laborDetailRepository.GetAll().FirstOrDefaultAsync(m => m.UserId == model.UserId && m.LaborId == model.LaborId);
+            if (existLaborDetail != null)
             {
-                return false;
+                existLaborDetail.Option = model.Option;
+                existLaborDetail.Goods = model.Goods;
+                await _laborDetailRepository.EditAsync(existLaborDetail);
             }
             else
             {
@@ -47,13 +51,26 @@ namespace Labor.Services
                     Option = model.Option,
                     Goods = model.Goods
                 });
-                return true;
             }
+            return true;
+
         }
 
         /// <summary>
-        /// 获取劳保通过LaborId
+        /// 获取劳保通过LaborId分页
         /// </summary>
+        /// <returns></returns>
+        public async Task<PageInfoHelper<LaborDetailListViewModel>> GetAllByHeadPage(GetLaborDetailViewModel model)
+        {
+            IQueryable<LaborDetailListViewModel> result = _laborDetailRepository.GetAllByHead(model);
+            var a = await PageInfoHelper<LaborDetailListViewModel>.CreatePageMsgAsync(result, model.PageNumber, model.PageSize);
+            return a;
+        }
+
+        /// <summary>
+        /// 获取劳保通过Id
+        /// </summary>
+        /// <param name="model"></param>
         /// <returns></returns>
         public IQueryable<LaborDetailListViewModel> GetAllByHead(GetLaborDetailViewModel model)
         {
@@ -128,6 +145,16 @@ namespace Labor.Services
                 ms.Close();
             }
             return buffer;
+        }
+
+        /// <summary>
+        /// 设置默认劳保
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task SetDefaultLabor(DefaultLaborViewModel model)
+        {
+            await _laborDetailRepository.SetDefaultLabor(model);
         }
     } 
     

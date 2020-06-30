@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Labor.Common;
 using Labor.IServices;
+using Labor.Model.Helpers;
 using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -49,10 +51,12 @@ namespace Labor.Core.Controllers
         /// 根据劳保期数显示所有人选择的劳保
         /// </summary>
         /// <returns></returns>
-        [HttpGet(nameof(GetLaborDetailByHead))]
-        public  IActionResult GetLaborDetailByHead([FromQuery]GetLaborDetailViewModel model)
+        [HttpGet(nameof(GetLaborDetailByHeadPage))]
+        public async Task<IActionResult> GetLaborDetailByHeadPage([FromQuery]GetLaborDetailViewModel model)
         {
-            return Ok(_laborHeadService.GetAllByHead(model));
+            PageInfoHelper<LaborDetailListViewModel> result = await _laborHeadService.GetAllByHeadPage(model);
+            Response.Headers.Add("Pagination-X", JsonSerializer.Serialize(result.TotalCount));
+            return Ok(result);
         }
 
         /// <summary>
@@ -75,6 +79,18 @@ namespace Labor.Core.Controllers
         public IActionResult ExportLabor([FromQuery]GetLaborDetailViewModel model)
         {
             return File(_laborHeadService.ExlExport(model), "application/ms-excel", $"{model.Title}-{DateTime.Today}.xlsx");
+        }
+
+        /// <summary>
+        /// 设置默认劳保
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost(nameof(SetDefaultLabor))]
+        public async Task<IActionResult> SetDefaultLabor(DefaultLaborViewModel model)
+        {
+            await _laborHeadService.SetDefaultLabor(model);
+            return Ok();
         }
     }
 }

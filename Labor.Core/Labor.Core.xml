@@ -44,7 +44,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.LaborDetailController.GetLaborDetailByHead(Labor.Model.ViewModels.GetLaborDetailViewModel)">
+        <member name="M:Labor.Core.Controllers.LaborDetailController.GetLaborDetailByHeadPage(Labor.Model.ViewModels.GetLaborDetailViewModel)">
             <summary>
             根据劳保期数显示所有人选择的劳保
             </summary>
@@ -60,6 +60,13 @@
         <member name="M:Labor.Core.Controllers.LaborDetailController.ExportLabor(Labor.Model.ViewModels.GetLaborDetailViewModel)">
             <summary>
             导出劳保
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.LaborDetailController.SetDefaultLabor(Labor.Model.Models.DefaultLaborViewModel)">
+            <summary>
+            设置默认劳保
             </summary>
             <param name="model"></param>
             <returns></returns>

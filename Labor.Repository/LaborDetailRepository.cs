@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Labor.Repository
 {
@@ -45,6 +46,40 @@ namespace Labor.Repository
                 result = result.Where(m => m.DepartmentId == model.DeptId);
             }
             return result;
+        }
+
+        /// <summary>
+        /// 根据部门设置默认的劳保
+        /// </summary>
+        /// <param name="DeptId"></param>
+        /// <returns></returns>
+        public async Task SetDefaultLabor(DefaultLaborViewModel model)
+        {
+            var userIdlist = from user in _context.User.Where(m=>m.DepartmentId==model.DeptId)
+                             join laborDetail in _context.LaborDetail.Where(m => m.LaborId == model.LaborId)
+                             on user.Id equals laborDetail.UserId into userJoinLabor
+                             from laborDetail in userJoinLabor.DefaultIfEmpty()
+                             orderby laborDetail.Goods
+                             where laborDetail.Option == null
+                             select new
+                             {
+                                 UserId = user.Id,
+                                 user.UserName,
+                                 laborDetail.Option
+                             };
+
+            foreach (var item in userIdlist)
+            {
+                await CreateAsync(new LaborDetail
+                {
+                    UserId = item.UserId,
+                    Goods = model.Goods,
+                    Option = model.Option,
+                    LaborId = model.LaborId,
+                }, false);
+            }
+            await SaveAsync();
+
         }
     }
 }
