@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Principal;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Labor.Common;
@@ -36,9 +37,25 @@ namespace Labor.Core.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpGet("Login")]
-        public async Task<IActionResult> LoginAsync(string callback)
+        public async Task<IActionResult> LoginAsync(string callback,string UserName,string Password)
         {
             string domainAccount = HttpContext.User.Identity.Name.Split('\\')[1];
+            //手动域账号登录
+            if (UserName != null)
+            {
+                try
+                {
+                    using (LoginHelper wi = new LoginHelper(UserName, HttpContext.User.Identity.Name.Split('\\')[0], Password))
+                    {
+                        domainAccount = UserName;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest($"域账号错误{ex.Message}");
+                }
+            }
+
             User user = await _userService.LoginAsync(new LoginViewModel { DomainAccount=domainAccount});
 
             if (user == null)

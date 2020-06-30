@@ -104,7 +104,7 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Labor.Core.Controllers.UserController.LoginAsync(System.String)">
+        <member name="M:Labor.Core.Controllers.UserController.LoginAsync(System.String,System.String,System.String)">
             <summary>
             登录
             </summary>
