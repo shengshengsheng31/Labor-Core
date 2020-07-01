@@ -22,9 +22,11 @@ namespace Labor.Services
     public class LaborDetailService : BaseService<LaborDetail>, ILaborDetailService
     {
         private readonly ILaborDetailRepository _laborDetailRepository;
-        public LaborDetailService(ILaborDetailRepository laborDetailRepository)
+        private readonly IUserRepository _userRepository;
+        public LaborDetailService(ILaborDetailRepository laborDetailRepository,IUserRepository userRepository)
         {
             _laborDetailRepository = laborDetailRepository;
+            _userRepository = userRepository;
             BaseRepository = laborDetailRepository;
         }
 
@@ -155,6 +157,39 @@ namespace Labor.Services
         public async Task SetDefaultLabor(DefaultLaborViewModel model)
         {
             await _laborDetailRepository.SetDefaultLabor(model);
+        }
+
+        /// <summary>
+        /// 获取每个选项的比例
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<List<OptionShowViewModel>> GetOptionRate(GetOptionRateViewModel model)
+        {
+            List<OptionShowViewModel> list = new List<OptionShowViewModel>() { };
+            int total = 0;
+            if (model.DeptId == Guid.Empty)
+            {
+                total = await _userRepository.GetAll().CountAsync();
+            }
+            else
+            {
+                total = await _userRepository.GetAll().Where(m => m.DepartmentId == model.DeptId).CountAsync();
+            }
+
+            IQueryable<LaborDetail> laborDetails =  _laborDetailRepository.GetAll().Where(m=>m.LaborId == model.LaborId);
+            model.Options.ForEach( option =>
+            {
+                int optionCount =  laborDetails.Where(m => m.Option == option).Count();
+                list.Add(new OptionShowViewModel()
+                {
+                    Option = option,
+                    OptionCount = optionCount,
+                    Total = total
+                });
+            });
+
+            return list;
         }
     } 
     

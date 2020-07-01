@@ -50,5 +50,12 @@ namespace Labor.IServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task SetDefaultLabor(DefaultLaborViewModel model);
+
+        /// <summary>
+        /// 获取每个选项的比例
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<List<OptionShowViewModel>> GetOptionRate(GetOptionRateViewModel model);
     }
 }

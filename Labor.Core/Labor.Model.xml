@@ -209,6 +209,21 @@
             Id
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.GetOptionRateViewModel.Options">
+            <summary>
+            选项列表
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetOptionRateViewModel.DeptId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetOptionRateViewModel.LaborId">
+            <summary>
+            劳保期数
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.GetUserViewModel.DeptId">
             <summary>
             部门Id

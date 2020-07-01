@@ -92,5 +92,16 @@ namespace Labor.Core.Controllers
             await _laborHeadService.SetDefaultLabor(model);
             return Ok();
         }
+
+        /// <summary>
+        /// 获取选项的比例
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet(nameof(GetOptionRate))]
+        public async Task<IActionResult> GetOptionRate([FromQuery]GetOptionRateViewModel model)
+        {
+            return Ok(await _laborHeadService.GetOptionRate(model));
+        }
     }
 }

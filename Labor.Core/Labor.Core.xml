@@ -71,6 +71,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.LaborDetailController.GetOptionRate(Labor.Model.ViewModels.GetOptionRateViewModel)">
+            <summary>
+            获取选项的比例
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Labor.Core.Controllers.LaborHeadController.CreateLaborHead(Labor.Model.ViewModels.EditLaborHeadViewModel)">
             <summary>
             创建一期劳保
