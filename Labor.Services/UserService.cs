@@ -67,7 +67,7 @@ namespace Labor.Services
         /// <returns></returns>
         public async Task<PageInfoHelper<User>>  GetAllUser(GetUserViewModel model)
         {
-            IQueryable<User> result = _userRepository.GetAllByOrder().Include(m=>m.Department);
+            IQueryable<User> result = _userRepository.GetAllByOrder().OrderBy(m=>m.DepartmentId).ThenBy(m=>m.EmpNo).Include(m=>m.Department);
             if (model.DeptId != Guid.Empty)
             {
                 result = result.Where(m => m.DepartmentId == model.DeptId);
