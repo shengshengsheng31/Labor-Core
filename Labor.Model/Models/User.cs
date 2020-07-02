@@ -13,8 +13,6 @@ namespace Labor.Model.Models
         /// <summary>
         /// 域账号
         /// </summary>
-        [Required]
-        [StringLength(50)]
         public string DomainAccount { get; set; }
 
         /// <summary>

@@ -92,5 +92,16 @@ namespace Labor.Services
                 UserName = model.UserName
             });
         }
+
+        /// <summary>
+        /// 通过工号查询
+        /// </summary>
+        /// <param name="empNum"></param>
+        /// <returns></returns>
+        public async Task<User> GetOneUserByNum(int empNum)
+        {
+            User user = await _userRepository.GetAll().Where(m => m.EmpNo == empNum).FirstOrDefaultAsync();
+            return user;
+        }
     }
 }

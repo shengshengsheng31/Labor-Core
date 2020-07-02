@@ -11,8 +11,6 @@ namespace Labor.Model.ViewModels
         /// <summary>
         /// 域帐号
         /// </summary>
-        [Required]
-        [StringLength(50)]
         public string DomainAccount { get; set; }
 
         /// <summary>

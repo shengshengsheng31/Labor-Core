@@ -166,5 +166,12 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.UserController.GetUserByNum(System.Int32)">
+            <summary>
+            通过工号获取用户
+            </summary>
+            <param name="EmpNo"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

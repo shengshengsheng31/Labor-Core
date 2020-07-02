@@ -151,5 +151,17 @@ namespace Labor.Core.Controllers
             await _userService.UpdateRole(model);
             return Ok();
         }
+
+        /// <summary>
+        /// 通过工号获取用户
+        /// </summary>
+        /// <param name="EmpNo"></param>
+        /// <returns></returns>
+        [HttpGet(nameof(GetUserByNum))]
+        public async Task<IActionResult> GetUserByNum(int EmpNo)
+        {
+            return Ok(await _userService.GetOneUserByNum(EmpNo));
+            
+        }
     }
 }

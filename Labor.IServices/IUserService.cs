@@ -38,5 +38,12 @@ namespace Labor.IServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task UpdateRole(UpdateRoleViewModel model);
+
+        /// <summary>
+        /// 通过工号查询
+        /// </summary>
+        /// <param name="empNum"></param>
+        /// <returns></returns>
+        Task<User> GetOneUserByNum(int empNum);
     }
 }
