@@ -246,7 +246,12 @@ namespace Labor.Core.Controllers
                         countSkip++;
                         continue;
                     }
-                    Department dept = await _departmentService.GetAll().FirstAsync(m => m.DeptName == Convert.ToString(currentRow.GetCell(3)));
+                    Department dept = await _departmentService.GetAll().FirstOrDefaultAsync(m => m.DeptName == Convert.ToString(currentRow.GetCell(3)));
+                    if (dept == null)
+                    {
+                        countSkip++;
+                        continue;
+                    }
                     await _userService.CreateAsync(new User
                     {
                         UserName = userName,
