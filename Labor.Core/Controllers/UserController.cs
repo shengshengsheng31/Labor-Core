@@ -235,7 +235,7 @@ namespace Labor.Core.Controllers
                     string domainAccount = Convert.ToString(currentRow.GetCell(2)).Trim();
                     string deptName = Convert.ToString(currentRow.GetCell(3)).Trim();
                     //验证数据有效性
-                    if (userName == "" || empNo==0 || domainAccount == "" || deptName == "")
+                    if (userName == "" || empNo==0 || deptName == "")
                     {
                         countSkip++;
                         continue;

@@ -229,6 +229,16 @@
             部门Id
             </summary>
         </member>
+        <member name="P:Labor.Model.ViewModels.GetUserViewModel.QueryType">
+            <summary>
+            类别
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.GetUserViewModel.QueryString">
+            <summary>
+            具体字段
+            </summary>
+        </member>
         <member name="P:Labor.Model.ViewModels.LoginViewModel.DomainAccount">
             <summary>
             登录帐号
@@ -317,6 +327,11 @@
         <member name="P:Labor.Model.ViewModels.UpdateRoleViewModel.DepartmentId">
             <summary>
             部门
+            </summary>
+        </member>
+        <member name="P:Labor.Model.ViewModels.UpdateUserViewModel.Id">
+            <summary>
+            ID
             </summary>
         </member>
     </members>
