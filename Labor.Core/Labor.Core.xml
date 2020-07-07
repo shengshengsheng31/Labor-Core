@@ -173,5 +173,26 @@
             <param name="EmpNo"></param>
             <returns></returns>
         </member>
+        <member name="M:Labor.Core.Controllers.UserController.UpdateUser(Labor.Model.ViewModels.UpdateUserViewModel)">
+            <summary>
+            修改用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.GetUserByQuery(Labor.Model.ViewModels.GetUserViewModel)">
+            <summary>
+            通过条件获取用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Labor.Core.Controllers.UserController.ImportExcel(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            导入
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

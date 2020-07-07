@@ -45,5 +45,19 @@ namespace Labor.IServices
         /// <param name="empNum"></param>
         /// <returns></returns>
         Task<User> GetOneUserByNum(int empNum);
+
+        /// <summary>
+        /// 更新用户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task UpdateUser(UpdateUserViewModel model);
+
+        /// <summary>
+        /// 条件查询用户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        IQueryable<User> GetUserByQuery(GetUserViewModel model);
     }
 }

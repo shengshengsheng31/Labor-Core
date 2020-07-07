@@ -103,5 +103,49 @@ namespace Labor.Services
             User user = await _userRepository.GetAll().Where(m => m.EmpNo == empNum).FirstOrDefaultAsync();
             return user;
         }
+
+        /// <summary>
+        /// 更新用户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task UpdateUser(UpdateUserViewModel model)
+        {
+            User user = await _userRepository.GetAll().FirstAsync(m => m.Id == model.Id);
+            user.UserName = model.UserName;
+            user.DepartmentId = model.DepartmentId;
+            user.DomainAccount = model.DomainAccount;
+            user.EmpNo = model.EmpNo;
+            user.Level = model.Level;
+            user.UpdateTime = DateTime.Now;
+            await _userRepository.EditAsync(user);
+        }
+
+        /// <summary>
+        /// 通过条件获取用户
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public IQueryable<User> GetUserByQuery(GetUserViewModel model)
+        {
+            IQueryable<User> result = _userRepository.GetAll();
+            string type = model.QueryType;
+            switch (type)
+            {
+                case "UserName":
+                    result = result.Where(m => m.UserName == model.QueryString);
+                    break;
+                case "EmpNo":
+                    result = result.Where(m => m.EmpNo ==Convert.ToInt32(model.QueryString));
+                    break;
+                case "DomainAccount":
+                    result = result.Where(m => m.DomainAccount == model.QueryString);
+                    break;
+                default:
+                    break;
+            }
+            return result;
+
+        }
     }
 }
