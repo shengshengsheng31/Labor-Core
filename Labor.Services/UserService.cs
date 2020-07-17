@@ -6,6 +6,7 @@ using Labor.Model.Models;
 using Labor.Model.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using NPOI.SS.Formula.Functions;
+using NPOI.SS.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,11 @@ namespace Labor.Services
         public async Task<bool> RegisterAsync(RegisterViewModel model)
         {
             //存在域账号
-            if (await _userRepository.GetAll().AnyAsync(m => m.DomainAccount == model.DomainAccount || m.EmpNo == model.EmpNo))
+            if (await _userRepository.GetAll().AnyAsync(m => m.EmpNo == model.EmpNo))
+            {
+                return false;
+            }
+            else if (model.DomainAccount.Trim() != "" && await _userRepository.GetAll().AnyAsync(m => m.DomainAccount == model.DomainAccount))
             {
                 return false;
             }
@@ -50,8 +55,8 @@ namespace Labor.Services
             {
                 await _userRepository.CreateAsync(new User
                 {
-                    DomainAccount = model.DomainAccount,
-                    UserName = model.UserName,
+                    DomainAccount = model.DomainAccount.Trim(),
+                    UserName = model.UserName.Trim(),
                     DepartmentId = model.DepartmentId,
                     Level = model.Level,
                     EmpNo = model.EmpNo,
